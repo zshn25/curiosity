@@ -1,1 +1,1 @@
-Sitemap: https://zshn25.github.io/curiosity/sitemap.xml
+Sitemap: https://zshn25.github.io/sitemap.xml
