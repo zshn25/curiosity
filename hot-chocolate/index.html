@@ -68,8 +68,8 @@ window.onload = wrap_img;
 <script src="/assets/js/main.js"></script>
 
 <!-- <link id="dark-css" href="/assets/css/dark.scss" rel="stylesheet" media="(prefers-color-scheme: dark)"> -->
-<link id="dark-css" href="/assets/css/dark.css" rel="stylesheet" media="(prefers-color-scheme: dark)"></head>
-<body><header class="fixed-top site-header">
+<link id="dark-css" href="/assets/css/dark.scss" rel="stylesheet" media="(prefers-color-scheme: dark)"></head>
+<body><header class="site-header fixed-top">
 
   <div class="wrapper"><a class="site-title" rel="author" href="/"> <img src="/images/logo.png" style="max-width:40px;" alt="Curiosity logo"> Curiosity</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
@@ -118,13 +118,13 @@ window.onload = wrap_img;
     
       <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
       
-        <a class="category-tags-link" href="/categories/#food">food</a>
+        <a class="category-tags-link label label-default" href="/categories/#food">#food</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/categories/#cooking">cooking</a>
+        <a class="category-tags-link label label-default" href="/categories/#cooking">#cooking</a>
         &nbsp;
       
-        <a class="category-tags-link" href="/categories/#recipe">recipe</a>
+        <a class="category-tags-link label label-default" href="/categories/#recipe">#recipe</a>
         
       
       </p>
@@ -313,6 +313,17 @@ License: https://creativecommons.org/licenses/by-sa/3.0/-->
         
     
         
+
+            
+            
+
+            
+
+            
+
+        
+    
+        
     
         
 
@@ -345,8 +356,10 @@ License: https://creativecommons.org/licenses/by-sa/3.0/-->
 
             
                 <article class="archive-item">
-                    <p class="post-meta post-meta-title"><a class="page-meta" href="/nutrition/">Nutrition</a>  • <i class="far fa-calendar-alt"> Oct 30, 2020  •  <i class="fas fa-tags category-tags-icon"></i></i> <a class="category-tags-link"
-                        href="/categories/#"> <span class="label label-default">cooking</span> </a>
+                    <p class="post-meta"><a class="post-meta-title" href="/nutrition/">Nutrition</a>  •  
+                        <i class="far fa-calendar-alt"></i> Oct 30, 2020  •  
+                        <i class="fas fa-tags category-tags-icon"></i>
+                        <a class="category-tags-link" href="/categories/# <span class="label label-default">cooking</span> "> <span class="label label-default">cooking</span> </a>
                     </p>
                 </article>
                 
@@ -377,7 +390,7 @@ License: https://creativecommons.org/licenses/by-sa/3.0/-->
     <div class="footer-col-wrapper">
       <div class="footer-col">
         <p class="feed-subscribe">
-          <a href="/feed.xml">
+          <a href="https://feedrabbit.com/?url=/feed.xml">
             <svg class="svg-icon orange">
               <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
             </svg><span>Subscribe</span>
