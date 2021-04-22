@@ -329,6 +329,8 @@ img.emoji { display: inline !important; vertical-align: baseline !important; }
 
 .post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: light-grey; }
 
+.site-header { border-top: 0px; border-bottom: 0px; }
+
 .fixed-top { position: fixed; top: 0; right: 0; left: 0; z-index: 1030; width: 100%; background: white; height: 60px; }
 
 .search-padding { padding-top: 30px; }
