@@ -175,7 +175,7 @@ window.onload = wrap_img;
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the <a href="/is-convolution-linear/">previous post</a>, we proved that convolutions were linear. There are other linear layers in a neural network such as a batch normalization layer. A batch normalization layer <a href="https://en.wikipedia.org/wiki/Normalization_(statistics">normalizes</a> its input batch to have zero mean and unit standard deviation, which are calculated from the input batch.<sup id="fnref-1" class="footnote-ref"><a href="#fn-1">1</a></sup> It basically translates/shifts and scales the input batch, thus being a linear operation. In many network architectures such as ResNets<sup id="fnref-2" class="footnote-ref"><a href="#fn-2">2</a></sup> and DenseNets<sup id="fnref-3" class="footnote-ref"><a href="#fn-3">3</a></sup>, a convolutional layer followed by a batch norm layer.</p>
 <p>During training, the mean and standard deviation of the input batch are used in the batch normalization and are eventually learnt. During inference, the estimates of mean and standard deviation are used for normalization instead. The idea of this post is to fuse these two consecutive layers during inference time.</p>
-<p>Pytorch provides a utility <a href="https://github.com/pytorch/pytorch/blob/master/torch/nn/utils/fusion.py">function to fuse convolution and batch norm</a>, although this was meant for the use of quantization. In this post, I wrote a function to check and fuse all consecutive convolution and batch norm layers.</p>
+<p>Pytorch provides a utility <a href="https://github.com/pytorch/pytorch/blob/master/torch/nn/utils/fusion.py">function to fuse convolution and batch norm</a>, although this was meant for the use of quantization. In this post, I share the following function to recursively check and fuse all consecutive convolution and batch norm layers.</p>
 
 </div>
 </div>
@@ -193,7 +193,7 @@ window.onload = wrap_img;
 <span class="k">def</span> <span class="nf">fuse_all_conv_bn</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fuses all consecutive Conv2d and BatchNorm2d layers.</span>
-<span class="sd">    License: Copyright Zeeshan Khan Suri 2021, CC BY-NC 4.0</span>
+<span class="sd">    License: Copyright Zeeshan Khan Suri, CC BY-NC 4.0</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span> <span class="c1"># immediate children</span>
@@ -299,8 +299,8 @@ Error between outputs before and after fusion:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>© 2021 Zeeshan Khan Suri, <a href="">CC BY-NC 4.0</a> <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-nc"></i>
-If this article was helpful to you, consider citing</p>
+<p>© Zeeshan Khan Suri, <a href="http://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-nc"></i></a></p>
+<p>If this article was helpful to you, consider citing</p>
 
 </div>
 </div>
@@ -339,7 +339,7 @@ If this article was helpful to you, consider citing</p>
       </h2>
     <p><div class="footnotes"><p id="fn-1">1. Ioffe, S. &amp; Szegedy, C.. (2015). Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift. Proceedings of the 32nd International Conference on Machine Learning, in Proceedings of Machine Learning Research 37:448-456 <a href="http://proceedings.mlr.press/v37/ioffe15.html">Link</a>.<a href="#fnref-1" class="footnote footnotes">↩</a></p></div>
 <div class="footnotes"><p id="fn-2">2. K. He, X. Zhang, S. Ren and J. Sun, "Deep Residual Learning for Image Recognition," 2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2016, pp. 770-778, doi: <a href="https://doi.org/10.1109/CVPR.2016.90">10.1109/CVPR.2016.90</a>. <a href="#fnref-2" class="footnote footnotes">↩</a></p></div>
-<div class="footnotes"><p id="fn-3">3. <a href="#fnref-3" class="footnote footnotes">↩</a></p></div></p>
+<div class="footnotes"><p id="fn-3">3. G. Huang, Z. Liu, L. Van Der Maaten and K. Q. Weinberger, "Densely Connected Convolutional Networks," 2017 IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2017, pp. 2261-2269, doi: <a href="https://doi.org/10.1109/CVPR.2017.243">10.1109/CVPR.2017.243</a>. <a href="#fnref-3" class="footnote footnotes">↩</a></p></div></p>
 
 </div>
 </div>
