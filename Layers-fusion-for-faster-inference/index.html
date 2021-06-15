@@ -3,7 +3,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+  <meta name="referrer" content="no-referrer"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Layers fusion for faster neural network inference | Curiosity</title>
 <meta name="generator" content="Jekyll v4.1.1" />
 <meta property="og:title" content="Layers fusion for faster neural network inference" />
@@ -71,7 +74,7 @@ window.onload = wrap_img;
 <link id="dark-css" href="/assets/css/dark.scss" rel="stylesheet" media="(prefers-color-scheme: dark)"></head>
 <body><header class="site-header fixed-top">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/"> <img src="/images/logo.png" style="max-width:40px;" alt="Curiosity logo"> Curiosity</a><nav class="site-nav">
+  <div class="wrapper"><a class="site-title no-underline hover-grow" rel="author" href="/"> <img src="/images/logo.png" style="max-width:40px;" alt="Curiosity logo"> Curiosity</a><nav class="site-nav">
         <input type="checkbox" id="nav-trigger" class="nav-trigger" />
         <label for="nav-trigger">
           <span class="menu-icon">
@@ -114,7 +117,7 @@ window.onload = wrap_img;
        • <i class="far fa-clock"></i> <span class="read-time" title="Estimated read time">
     
     
-      2 mins read
+      3 mins read
     
 </span></p>
 
@@ -173,8 +176,9 @@ window.onload = wrap_img;
         
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the <a href="/is-convolution-linear/">previous post</a>, we proved that convolutions were linear. There are other linear layers in a neural network such as a batch normalization layer. A batch normalization layer <a href="https://en.wikipedia.org/wiki/Normalization_(statistics">normalizes</a> its input batch to have zero mean and unit standard deviation, which are calculated from the input batch.<sup id="fnref-1" class="footnote-ref"><a href="#fn-1">1</a></sup> It basically translates/shifts and scales the input batch, thus being a linear operation. In many network architectures such as ResNets<sup id="fnref-2" class="footnote-ref"><a href="#fn-2">2</a></sup> and DenseNets<sup id="fnref-3" class="footnote-ref"><a href="#fn-3">3</a></sup>, a convolutional layer followed by a batch norm layer.</p>
-<p>During training, the mean and standard deviation of the input batch are used in the batch normalization and are eventually learnt. During inference, the estimates of mean and standard deviation are used for normalization instead. The idea of this post is to fuse these two consecutive layers during inference time.</p>
+<p>In the <a href="/is-convolution-linear/">previous post</a>, we proved that convolutions are linear. There are other linear layers in a neural network such as a batch normalization layer. A batch normalization layer <a href="https://en.wikipedia.org/wiki/Normalization_(statistics">normalizes</a> its input batch to have zero mean and unit standard deviation, which are calculated from the input batch.<sup id="fnref-1" class="footnote-ref"><a href="#fn-1">1</a></sup> It basically translates/shifts and scales the input batch, thus being a linear operation. In many network architectures such as ResNets<sup id="fnref-2" class="footnote-ref"><a href="#fn-2">2</a></sup> and DenseNets<sup id="fnref-3" class="footnote-ref"><a href="#fn-3">3</a></sup>, a convolutional layer followed by a batch norm layer is used.</p>
+<p>During training, the mean and standard deviation of the input batch are used in the batch normalization and are eventually learnt. During inference, these estimates of mean and standard deviation are used instead. The idea of this post is to fuse these two consecutive layers during inference, thereby reducing computation and thus inference time.</p>
+<p>Note that this must not be done during training since the input batch's mean and standard deviation are not yet learnt and fusing before training will be same as removing the batch normalization completely.</p>
 <p>Pytorch provides a utility <a href="https://github.com/pytorch/pytorch/blob/master/torch/nn/utils/fusion.py">function to fuse convolution and batch norm</a>, although this was meant for the use of quantization. In this post, I share the following function to recursively check and fuse all consecutive convolution and batch norm layers.</p>
 
 </div>
@@ -220,11 +224,11 @@ window.onload = wrap_img;
       <h2 id="Test">
         
         
-          <a href="#Test" class="heading-anchor" aria-hidden="true" tabindex="-1"><svg class='octicon' viewBox='0 0 16 16' version='1.1' width='16' height='32' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg></a> Test<a class="anchor-link" href="#Test"> </a>
+          <a href="#Test" class="heading-anchor" aria-hidden="true" tabindex="-1"><svg class='octicon octicon-heading-anchor' viewBox='0 0 16 16' version='1.1' width='16' height='32' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg></a> Test<a class="anchor-link" href="#Test"> </a>
         
         
       </h2>
-    <p>Fusing all convolution and batch norm layers of ResNet101 makes the resulting model <strong>~25% faster</strong> with negligible difference in the model's output. Note that the same can be done with any other consecutive linear layers.</p>
+    <p>Fusing all convolution and batch norm layers of ResNet101 makes the resulting model <strong>~25% faster</strong> with negligible difference in the model's output.</p>
 
 </div>
 </div>
@@ -299,6 +303,13 @@ Error between outputs before and after fusion:
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Note that the same can be done with any network with 2 or more consecutive linear layers to reduce inference time.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>© Zeeshan Khan Suri, <a href="http://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i> <i class="fab fa-creative-commons-nc"></i></a></p>
 <p>If this article was helpful to you, consider citing</p>
 
@@ -333,7 +344,7 @@ Error between outputs before and after fusion:
       <h2 id="References">
         
         
-          <a href="#References" class="heading-anchor" aria-hidden="true" tabindex="-1"><svg class='octicon' viewBox='0 0 16 16' version='1.1' width='16' height='32' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg></a> References<a class="anchor-link" href="#References"> </a>
+          <a href="#References" class="heading-anchor" aria-hidden="true" tabindex="-1"><svg class='octicon octicon-heading-anchor' viewBox='0 0 16 16' version='1.1' width='16' height='32' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg></a> References<a class="anchor-link" href="#References"> </a>
         
         
       </h2>
@@ -483,6 +494,28 @@ License: https://creativecommons.org/licenses/by-sa/3.0/-->
             
 
             
+
+        
+    
+        
+
+            
+            
+
+            
+
+            
+
+        
+    
+        
+
+            
+            
+
+            
+
+            
                 <article class="archive-item">
                     <p class="post-meta"><a class="post-meta-title" href="/ResNet-feature-pyramid-in-Pytorch/">ResNet feature pyramid in Pytorch</a>  •  
                         <i class="far fa-calendar-alt"></i> Feb 9, 2021  •  
@@ -553,35 +586,27 @@ License: https://creativecommons.org/licenses/by-sa/3.0/-->
 
         
     
-        
-
-            
-            
-
-            
-
-            
-
-        
-    
     
     
 </div>
   
 
-<div class="post-nav" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-  <p style="flex: 1 1 0; width: 45%; padding-right: 0.5em;">
-    
-    
-    <a href="/fasting-during-ramadan/">&#8672;&nbsp;The virtue of fasting during Ramadan
+<nav class="paginate-container"  aria-label="Pagination"></nav>
+  <div class="pagination" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+      
+        
+          <a class="previous_page" style="flex: 1 1 0; width: 45%; padding-right: 0.5em; text-align: right; background-color: transparent;" rel="previous" aria-label="Previous Page" href="/fasting-during-ramadan/"><b>Previous:</b> The virtue of fasting during Ramadan
 </a>
-    
-    
-  </p>
-  <p style="flex: 1 1 0; width: 45%; padding-left: 0.5em; text-align: right">
-    
-  </p>
-</div><!-- from https://github.com/utterance/utterances -->
+        
+      
+      
+        
+          <a class="next_page" style="flex: 1 1 0; width: 45%; padding-left: 0.5em; text-align: left; background-color: transparent;" rel="next" aria-label="Next Page" href="/why-privacy-matters/"><b>Next:</b> Privacy
+</a>
+        
+      
+  </div>
+</nav><!-- from https://github.com/utterance/utterances -->
 <script src="https://utteranc.es/client.js"
         repo="zshn25/zshn25.github.io"
         issue-term="title"
