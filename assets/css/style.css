@@ -122,7 +122,7 @@ html { font-size: 16px; }
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre, hr, dl, dd, ol, ul, figure { margin: 0; padding: 0; }
 
 /** Basic styling */
-body { font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif; color: #111111; background-color: #fdfdfd; -webkit-text-size-adjust: 100%; -webkit-font-feature-settings: "kern" 1; -moz-font-feature-settings: "kern" 1; -o-font-feature-settings: "kern" 1; font-feature-settings: "kern" 1; font-kerning: normal; display: flex; min-height: 100vh; flex-direction: column; overflow-wrap: break-word; }
+body { font: 400 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", "Segoe UI Symbol", "Segoe UI Emoji", "Apple Color Emoji", Roboto, Helvetica, Arial, sans-serif; color: #111111; background-color: white; -webkit-text-size-adjust: 100%; -webkit-font-feature-settings: "kern" 1; -moz-font-feature-settings: "kern" 1; -o-font-feature-settings: "kern" 1; font-feature-settings: "kern" 1; font-kerning: normal; display: flex; min-height: 100vh; flex-direction: column; overflow-wrap: break-word; }
 
 /** Set `margin-bottom` to maintain vertical rhythm */
 h1, h2, h3, h4, h5, h6, p, blockquote, pre, ul, ol, dl, figure, .highlight { margin-bottom: 15px; }
@@ -216,7 +216,7 @@ table td { border: 1px solid #e8e8e8; }
 
 .site-title, .site-title:visited { color: #424242; }
 
-.site-nav { position: absolute; top: 9px; right: 15px; background-color: #fdfdfd; border: 1px solid #e8e8e8; border-radius: 5px; text-align: right; }
+.site-nav { position: absolute; top: 9px; right: 15px; background-color: white; border: 1px solid #e8e8e8; border-radius: 5px; text-align: right; }
 
 .site-nav .nav-trigger { display: none; }
 
@@ -327,7 +327,7 @@ table td { border: 1px solid #e8e8e8; }
 
 img.emoji { display: inline !important; vertical-align: baseline !important; }
 
-.post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: light-grey; }
+.post figcaption { text-align: center; font-size: .8rem; font-style: italic; color: #515151; }
 
 .site-header { border-top: 0px; border-bottom: 0px; }
 
@@ -399,11 +399,11 @@ h1:hover .anchor-link, h2:hover .anchor-link, h3:hover .anchor-link, h4:hover .a
 
 .post-meta-title, .post-meta { margin-top: .25em !important; margin-bottom: .25em !important; font-size: 105%; }
 
-.page-description { margin-top: .5rem !important; margin-bottom: .5rem !important; color: #585858; font-size: 115%; }
+.page-description { margin-top: .5rem !important; margin-bottom: .5rem !important; color: #515151; font-size: 125%; }
 
 .category-tags-icon { font-size: 75% !important; padding-left: 0.375em; opacity: 50%; }
 
-.category-tags-link { color: #9a81bb !important; font-size: 13px !important; }
+.category-tags-link { color: #00b199 !important; font-size: 13px !important; }
 
 .js-search-results { padding-top: 0.2rem; }
 
@@ -457,7 +457,7 @@ img + em { text-align: center; font-size: .8rem; font-style: italic; color: ligh
 
 #share-buttons > div { position: relative; text-align: left; height: 36px; width: 32px; float: left; text-align: center; }
 
-#share-buttons > div > svg { height: 16px; fill: #d5d5d5; margin-top: 10px; }
+#share-buttons > div > svg { height: 16px; fill: #aaaaaa; margin-top: 10px; }
 
 #share-buttons > div:hover { cursor: pointer; }
 
@@ -494,6 +494,16 @@ img + em { text-align: center; font-size: .8rem; font-style: italic; color: ligh
 #nav-switch-theme { /* We will make it visible with JavaScript as it does not work without it */ display: none; cursor: pointer; }
 
 .nav-theme-icon:before { color: var(--warning); font-size: 0.875em; content: "\f186"; }
+
+a:link { color: #7a51cc; }
+
+a:visited { color: #7a51cc; }
+
+::selection { background: #9966ff; color: white; text-shadow: none; }
+
+::-moz-selection { background: #9966ff; color: white; text-shadow: none; }
+
+@media (prefers-color-scheme: dark) { html, body, input, textarea, select, button { color: rgba(255, 255, 255, 0.87) !important; background-color: #0f0e11 !important; } a:link { color: #9999ff; } a:visited { color: #9966ff; } a:hover { color: rgba(255, 255, 255, 0.87); } .site-title, .site-title:visited, .site-nav, .page-link { color: rgba(255, 255, 255, 0.87) !important; } .site-nav { background-color: #0f0e11; border-color: #313032; } * { scrollbar-color: #0f0e11 #313032; } pre, code { border-color: #313032; background-color: #1b1a1d; } .page-description { color: rgba(255, 255, 255, 0.69); } .post-meta { color: rgba(255, 255, 255, 0.38); } .post-content p, .post-content li { color: rgba(255, 255, 255, 0.69); } .btn { background-color: #1b1a1d !important; color: rgba(255, 255, 255, 0.87) !important; border-color: #313032 !important; } .btn:hover { background-color: #0f0e11 !important; } table th { background-color: #1b1a1d; border-color: #313032; color: rgba(255, 255, 255, 0.87); } table td { background-color: #0f0e11; border-color: #313032; color: rgba(255, 255, 255, 0.69); } .flash { color: #0f0e11 !important; filter: brightness(80%); } canvas { filter: invert(100%); } .post-list > li > div { box-shadow: none !important; background-color: #1b1a1d; border: none !important; } li .post-meta-description { color: rgba(255, 255, 255, 0.69) !important; } .fixed-top { color: rgba(255, 255, 255, 0.87) !important; background-color: #0f0e11 !important; } }
 
 .language-python + .language-plaintext { border-left: 1px solid grey; margin-left: 1rem !important; }
 
