@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="twitter:card" content="summary_large_image" />
   
-  <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
   <meta name="referrer" content="no-referrer"><!-- Begin Jekyll SEO tag v2.6.1 -->
 <title>Privacy | Curiosity</title>
 <meta name="generator" content="Jekyll v4.1.1" />
@@ -25,23 +24,25 @@
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://zshn25.github.io/feed.xml" title="Curiosity" /><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css" integrity="sha512-h7nl+xz8wgDlNM4NqKEM4F1NkIRS17M9+uJwIGwuo8vGqIl4BhuCKdxjWEINm+xyrUjNCnK5dCrhM0sj+wTIXw==" crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.js" integrity="sha512-/CMIhXiDA3m2c9kzRyd97MTb3MC6OVnx4TElQ7fkkoRghwDf6gi41gaT1PwF270W6+J60uTmwgeRpNpJdRV6sg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/contrib/auto-render.min.js" integrity="sha512-Do7uJAaHZm5OLrIv/yN4w0iG1dbu01kzdMNnFfu/mAqgUk6Nniv2JYHcwH+cNwjqgLcqcuBBk+JRvprLVI8azg==" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha512-0doc9hKxR3PYwso42RD1p5ySZpzzuDiOwMrdCEh2WdJZCjcmFKc/wEnL+z8fBQrnHoiNWbo+3fiGkOYXBdQp4A==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha384-Um5gpz1odJg5Z4HAmzPtgZKdTBHZdw8S29IecapCSB31ligYPhHQZMIlWLYQGVoc" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.js" integrity="sha384-YNHdsYkH6gMx9y3mRkmcJ2mFUjTd0qNQQvY9VYZgQd7DcN7env35GzlmFaZ23JGp" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous"></script>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement( document.body, {
-        delimiters: [
-            {left: "$$", right: "$$", display: true},
-            {left: "[%", right: "%]", display: true},
-            {left: "$", right: "$", display: false}
-        ]}
-        );
-    });
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+            // customised options
+            // • auto-render specific keys, e.g.:
+            delimiters: [
+                {left: '$$', right: '$$', display: true},
+                {left: '$', right: '$', display: false},
+                {left: '\\(', right: '\\)', display: false},
+                {left: '\\[', right: '\\]', display: true}
+            ],
+            // • rendering keys, e.g.:
+            throwOnError : false
+            });
+        });
     </script>
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
 
 
 <script>
@@ -137,9 +138,9 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     
-    <div class="Toast Toast--warning googoo">
+    <div class="Toast Toast--warning googoo" role="alert">
    <span aria-hidden="true" class="Toast-icon octicon octicon-alert"><svg class="octicon octicon-alert octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.22 1.754a.25.25 0 00-.44 0L1.698 13.132a.25.25 0 00.22.368h12.164a.25.25 0 00.22-.368L8.22 1.754zm-1.763-.707c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0114.082 15H1.918a1.75 1.75 0 01-1.543-2.575L6.457 1.047zM9 11a1 1 0 11-2 0 1 1 0 012 0zm-.25-5.25a.75.75 0 00-1.5 0v2.5a.75.75 0 001.5 0v-2.5z"></path></svg></span>
-   <span class="Toast-content"></span>
+   <span class="Toast-content">This post is still in draft mode. Some of the ideas are complete but needs expansion. Suggestions and comments are always welcome</span>
 </div>
 
 <!-- {::options parse_block_html="true" /} -->
@@ -219,9 +220,9 @@ Diving in topics such as this are like going down a never ending rabbit hole. I 
 
 <p>That freedom is taken away when privacy is taken away ( for e.g., via surveillance). Institutions want to be in control and the most effective way of being in control is to take away freedom. To force compliance of social norms and orthodoxy. To brainwash the members into believing what they want them to believe.</p>
 
-<div class="Toast">
-   <span class="Toast-icon"><svg class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
-   <span class="Toast-content"></span>
+<div class="Toast Toast--info googoo" role="alert">
+   <span aria-hidden="true" class="Toast-icon octicon octicon-info"><svg class="octicon octicon-info" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8zm6.5-.25A.75.75 0 017.25 7h1a.75.75 0 01.75.75v2.75h.25a.75.75 0 010 1.5h-2a.75.75 0 010-1.5h.25v-2h-.25a.75.75 0 01-.75-.75zM8 6a1 1 0 100-2 1 1 0 000 2z"></path></svg></span>
+   <span class="Toast-content">Freedom as a virtue, frees one from the social norms and orthodoxies and nourishes creative open thinking</span>
 </div>
 
 <blockquote>
@@ -262,7 +263,7 @@ Services like WhatsApp recently realized that people started to care about priva
 <blockquote class="twitter-tweet tw-align-center" data-dnt="true"><p lang="en" dir="ltr">All 533,000,000 Facebook records were just leaked for free.<br /><br />This means that if you have a Facebook account, it is extremely likely the phone number used for the account was leaked.<br /><br />I have yet to see Facebook acknowledging this absolute negligence of your data. <a href="https://t.co/ysGCPZm5U3">https://t.co/ysGCPZm5U3</a> <a href="https://t.co/nM0Fu4GDY8">pic.twitter.com/nM0Fu4GDY8</a></p>&mdash; Alon Gal (Under the Breach) (@UnderTheBreach) <a href="https://twitter.com/UnderTheBreach/status/1378314424239460352?ref_src=twsrc%5Etfw">April 3, 2021</a></blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<p>A recent leak of Facebook’s database allows the private data to be misused by malicious indented actors [^3].</p>
+<p>A recent leak of Facebook’s database allows the private data to be misused by malicious indented actors <sup id="fnref:3" role="doc-noteref"><a href="#fn:3" class="footnote">1</a></sup>.</p>
       <h3 id="political-propaganda">
         
         
@@ -302,7 +303,7 @@ Services like WhatsApp recently realized that people started to care about priva
       </h2>
     
 
-<p>Governments approve surveillance programs citing anti-terrorism and the question arises “security versus privacy”. Schneier argues that the real question should be “liberty versus control”[^2]. He argues that foreign physical threat is as bad as</p>
+<p>Governments approve surveillance programs citing anti-terrorism and the question arises “security versus privacy”. Schneier argues that the real question should be <strong>liberty versus control</strong><sup id="fnref:2" role="doc-noteref"><a href="#fn:2" class="footnote">2</a></sup>. He argues that foreign physical threat is as bad as …</p>
       <h3 id="the-privacy-paradox">
         
         
@@ -327,15 +328,16 @@ Companies</p>
 <p>What can you do?</p>
 
 <ul>
-  <li>Use encryption everywhere
-    <figure>
-<iframe src="https://archive.org/embed/tips-to-help-avoid-online-surveillance" width="75%" height="100%" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
+  <li>
+    <p>Use encryption everywhere</p>
+
+    <figure style="text-align: center;">
+<iframe src="https://archive.org/embed/tips-to-help-avoid-online-surveillance" width="75%" height="400vh" frameborder="0" webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen=""></iframe>
 <figcaption><a class="no_icon" target="_blank" href="https://ssd.eff.org/en/module/animated-overview-how-strong-encryption-can-help-avoid-online-surveillance" rel="noopener noreferrer">How Strong Encryption Can Help Avoid Online Surveillance</a>
 </figcaption>
 </figure>
-
-    <p>Install https://www.eff.org/https-everywhere browser plugin</p>
   </li>
+  <li>Install https://www.eff.org/https-everywhere browser plugin</li>
   <li>Change your default search engine to Duckduckgo on all browsers and start using it.</li>
   <li>Avoid platforms which are notorious for privacy abuse.</li>
   <li>Use Tor. Tor uses decentralized.</li>
@@ -360,10 +362,10 @@ Companies</p>
         
       </h3>
     
-      <h4 id="book-recommentation">
+      <h4 id="book-recommendation">
         
         
-          <a href="#book-recommentation" class="heading-anchor" aria-hidden="true" tabindex="-1"><svg class='octicon octicon-heading-anchor' viewBox='0 0 16 16' version='1.1' width='16' height='32' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg></a> Book recommentation
+          <a href="#book-recommendation" class="heading-anchor" aria-hidden="true" tabindex="-1"><svg class='octicon octicon-heading-anchor' viewBox='0 0 16 16' version='1.1' width='16' height='32' aria-hidden='true'><path fill-rule='evenodd' d='M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z'></path></svg></a> Book recommendation
         
         
       </h4>
@@ -372,7 +374,7 @@ Companies</p>
 <p>To summarize, I would like to point you to the following TED talk which will hopefully fill-in the gaps I left unfilled.</p>
 
 <figure class="video_container" style="text-align: center;"> 
- <div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/glenn_greenwald_why_privacy_matters" width="75%" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen=""></iframe></div></div>
+ <div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/glenn_greenwald_why_privacy_matters" width="75%" height="400vh" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen=""></iframe></div></div>
 </figure>
       <h2 id="references">
         
@@ -383,11 +385,16 @@ Companies</p>
       </h2>
     
 
-<ul>
-  <li>[^2] https://www.schneier.com/essays/archives/2006/05/the_eternal_value_of.html</li>
-  <li>[^3] https://www.businessinsider.com/stolen-data-of-533-million-facebook-users-leaked-online-2021-4?r=DE&amp;IR=T</li>
-  <li>[^4] Kosinski, M., Stillwell, D., &amp; Graepel, T. (2013). Private traits and attributes are predictable from digital records of human behavior. Proceedings of the National Academy of Sciences of the United States of America, 110(15), 5802–5805. <a href="https://doi.org/10.1073/pnas.1218772110" target="_blank">https://doi.org/10.1073/pnas.1218772110</a></li>
-</ul>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:3" role="doc-endnote">
+      <p><a href="https://www.businessinsider.com/stolen-data-of-533-million-facebook-users-leaked-online-2021-4">533 million Facebook users’ phone numbers and personal data have been leaked online</a> <a href="#fnref:3" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2" role="doc-endnote">
+      <p><a href="https://www.schneier.com/essays/archives/2006/05/the_eternal_value_of.html">The Eternal Value of Privacy</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
 
   </div><hr>
   <!-- This code is taken from Jekyll-Codex (jekyllcodex.org). MIT License
@@ -629,7 +636,8 @@ License: https://creativecommons.org/licenses/by-sa/3.0/-->
           </a>
         </p>
         <ul class="contact-list">
-          <li class="p-name">© Zeeshan Khan Suri</li>
+          <li class="p-name">© Zeeshan Khan Suri </li>
+          <div xmlns:cc="http://creativecommons.org/ns#" > <a href="http://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"></a></div>
           <li><a class="u-email" href="mailto:zshn25[at]gmail[dot]com">zshn25[at]gmail[dot]com</a></li>
         </ul>
       </div>
